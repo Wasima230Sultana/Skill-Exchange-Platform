@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link, Links } from 'react-router';
 
 const Skills = ({skill}) => {
-    const { skillName, rating, price, image, category } = skill;
+    const {skillId, skillName, rating, price, image, category } = skill;
 
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -39,9 +40,9 @@ const Skills = ({skill}) => {
         </p>
 
         {/* Button */}
-        <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300">
+        <Link to={`/skill/${skillId}`} className="btn w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300">
           View Details
-        </button>
+        </Link>
 
       </div>
     </div>
