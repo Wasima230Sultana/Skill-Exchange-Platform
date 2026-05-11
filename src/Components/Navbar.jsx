@@ -3,10 +3,10 @@ import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.png';
 import userIcon from '../assets/user.png';
 const Navbar = () => {
-    const links = [
+    const links = (
         <NavLink className={'mr-4'} to="/"> Home </NavLink>,
         <NavLink to="/my-profile">My Profile</NavLink>
-    ]
+    )
          
     
     return (
