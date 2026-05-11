@@ -9,7 +9,7 @@ const TopProviders = () => {
         .then(data=>setProvider(data))
     },[])
     return (
-        <div className='grid grid-cols-3 gap-8 my-4 bg-gray-600 p-4 rounded-sm'>
+        <div className='grid grid-cols-3 gap-8 my-4 bg-pink-300 p-4 rounded-sm'>
             {
                 provider.map(provider=>
                 <ProviderData key={provider.skillId} provider={provider}></ProviderData>)
