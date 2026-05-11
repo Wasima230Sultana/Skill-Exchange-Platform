@@ -30,9 +30,16 @@ const Navbar = () => {
       {links}
     </ul>
   </div>
-  <div className="navbar-end gap-4">
-    <img src={userIcon} alt="User Icon" className="w-10 h-10 rounded-full" />
-    <Link className="btn border-0 bg-sky-700 text-white px-6 py-2 rounded-lg shadow-md hover:bg-[rgb(60,70,140)] transition">Sign In</Link>
+  <div className="navbar-end gap-1">
+    <div className='flex items-center gap-2'>
+       
+    <Link className="btn border-0 bg-sky-700 text-white px-2 py-2 rounded-lg shadow-md hover:bg-[rgb(60,70,140)] transition"><span><img src={userIcon} alt="User Icon" className="w-5 h-5  rounded-full" /></span>Log In</Link>
+    </div>
+    <div className='flex items-center gap-2'>
+       
+    <Link className="btn border-0 bg-sky-700 text-white px-2 py-2 rounded-lg shadow-md hover:bg-[rgb(60,70,140)] transition"><span><img src={userIcon} alt="User Icon" className="w-5 h-5  rounded-full" /></span>Sign Up</Link>
+    </div>
+   
   </div>
 </div>
         </div>

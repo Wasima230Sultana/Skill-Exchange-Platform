@@ -6,7 +6,7 @@ import Skills from './Skills';
     
 const PopularSkills = () => {
    const dataSkills = use(data);
-   console.log(dataSkills)
+//    console.log(dataSkills)
     
     return (
         <div className='bg-gray-300 p-5 rounded-sm'>

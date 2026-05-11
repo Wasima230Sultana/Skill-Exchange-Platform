@@ -4,15 +4,15 @@ const Skills = ({skill}) => {
     const { skillName, rating, price, image, category } = skill;
 
   return (
-    <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
 
       {/* Image */}
       <div className="relative">
-        <img
-          className="w-full h-56 object-cover"
+        {/* <img
+          className="w-full h-56 object-cover p-2"
           src={image}
           alt={skillName}
-        />
+        /> */}
 
         {/* Category Badge */}
         {/* <span className="absolute top-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
