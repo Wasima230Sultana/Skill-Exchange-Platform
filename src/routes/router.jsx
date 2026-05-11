@@ -7,6 +7,7 @@ import Loading from "../Components/Loading";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
+import PrivateRouter from "../Components/Provider/PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +23,10 @@ export const router = createBrowserRouter([
                 element:<PopularSkills></PopularSkills>,
             },{
                 path:'/skill/:id',
-                element:<SkillDetails></SkillDetails>,
+                element:<PrivateRouter>
+                     <SkillDetails></SkillDetails>
+                </PrivateRouter>
+               ,
                  loader:()=>fetch('/skill.json'),
 
             }

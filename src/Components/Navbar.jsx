@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.png';
 import userIcon from '../assets/user.png';
+import { AuthContext } from './Provider/AuthProvider';
 const Navbar = () => {
+  const {user,logOut} = use(AuthContext)
+
+  const handleLogOut = ()=>{
+    alert('Logout successfully');
+    logOut()
+    .then(()=>{
+
+    })
+    .catch(error=>{
+        const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+    })
+    
+  }
     const links = (
-  <>
+    <>
     <NavLink className="mr-4" to="/">
       Home
     </NavLink>
@@ -38,15 +54,43 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-1">
-    <div className='flex items-center gap-2'>
-       
-    <Link to={'/auth/login'} className="btn border-0 bg-sky-700 text-white px-2 py-2 rounded-lg shadow-md hover:bg-[rgb(60,70,140)] transition"><span><img src={userIcon} alt="User Icon" className="w-5 h-5  rounded-full" /></span>Log In</Link>
-    </div>
-    <div className='flex items-center gap-2'>
-       
-    <Link to={'/auth/signup'} className="btn border-0 bg-sky-700 text-white px-2 py-2 rounded-lg shadow-md hover:bg-[rgb(60,70,140)] transition"><span><img src={userIcon} alt="User Icon" className="w-5 h-5  rounded-full" /></span>Sign Up</Link>
-    </div>
    
+   <div className='login-btn flex items-center gap-4'>
+
+    <img
+        className='w-10 h-10 rounded-full'
+        src={`${user ?user.photoURL:userIcon}`} 
+        alt="User"
+    />
+
+    {
+        !user ? (
+            <>
+                <Link
+                    to='/auth/login'
+                    className='btn border-0 bg-sky-700 text-white px-6'
+                >
+                    Login
+                </Link>
+
+                <Link
+                    to='/auth/signup'
+                    className='btn border-0 bg-sky-700 text-white px-6'
+                >
+                    Sign Up
+                </Link>
+            </>
+        ) : (
+            <button
+                onClick={handleLogOut}
+                className='btn border-0 bg-red-600 text-white px-6'
+            >
+                Logout
+            </button>
+        )
+    }
+
+</div>
   </div>
 </div>
         </div>
