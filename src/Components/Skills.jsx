@@ -8,11 +8,11 @@ const Skills = ({skill}) => {
 
       {/* Image */}
       <div className="relative">
-        {/* <img
-          className="w-full h-56 object-cover p-2"
+        <img
+          className="w-full h-56 object-cover "
           src={image}
           alt={skillName}
-        /> */}
+        />
 
         {/* Category Badge */}
         {/* <span className="absolute top-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">

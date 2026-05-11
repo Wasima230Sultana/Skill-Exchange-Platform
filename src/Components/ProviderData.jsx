@@ -9,13 +9,13 @@ const ProviderData = ({provider}) => {
       {/* Image */}
       <div className="relative">
         <img
-          className="w-full h-56 object-cover"
+          className="w-full h-50 p-4 object-cover"
           src={image}
           alt={providerName}
         />
 
         {/* Category Badge */}
-        <span className="absolute top-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+        <span className="absolute top-5 left-5 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
           {category || "Provider"}
         </span>
       </div>
