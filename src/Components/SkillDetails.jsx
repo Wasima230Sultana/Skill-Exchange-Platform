@@ -19,10 +19,73 @@ const SkillDetails = () => {
       </div>
     );
 }
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    alert("Session Booked Successfully!");
+
+    e.target.reset();
+  };
     return (
-        <div>
-            
+        <div className="max-w-4xl mx-auto my-10 bg-white shadow-lg rounded-xl overflow-hidden">
+
+      {/* Image */}
+      <img
+        className="w-full h-72 object-cover"
+        src={skillDetails.image}
+        alt={skillDetails.skillName}
+      />
+
+      {/* Content */}
+      <div className="p-6 space-y-3">
+
+        <h2 className="text-3xl font-bold">
+          {skillDetails.skillName}
+        </h2>
+
+        <p className="text-gray-600">
+          {skillDetails.description}
+        </p>
+
+        <p>👨‍🏫 Provider: {skillDetails.providerName}</p>
+        <p>⭐ Rating: {skillDetails.rating}</p>
+        <p>💰 Price: ${skillDetails.price}</p>
+        <p>📂 Category: {skillDetails.category}</p>
+
+        {/* Book Session Form */}
+        <div className="mt-8">
+          <h3 className="text-2xl font-bold mb-4">
+            Book Session
+          </h3>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="input input-bordered w-full"
+              required
+            />
+
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="input input-bordered w-full"
+              required
+            />
+
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+            >
+              Book Session
+            </button>
+
+          </form>
         </div>
+
+      </div>
+    </div>
     );
 };
 
