@@ -8,6 +8,7 @@ import AuthLayout from "../layout/AuthLayout";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import PrivateRouter from "../Components/Provider/PrivateRouter";
+import MyProfile from "../Pages/MyProfile";
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,9 @@ export const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            }, {
+                path:'/my-profile',
+                element:<MyProfile></MyProfile>
             },
             {
                 path:'/popular-skills',

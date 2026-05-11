@@ -1,11 +1,11 @@
-import React, { use } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.png';
 import userIcon from '../assets/user.png';
 import { AuthContext } from './Provider/AuthProvider';
+import { ClockLoader } from 'react-spinners';
 const Navbar = () => {
-  const {user,logOut} = use(AuthContext)
-
+  const {user,logOut,loading} = useContext(AuthContext)
   const handleLogOut = ()=>{
     alert('Logout successfully');
     logOut()
@@ -19,15 +19,15 @@ const Navbar = () => {
     })
     
   }
-    const links = (
-    <>
-    <NavLink className="mr-4" to="/">
-      Home
-    </NavLink>
+   const links = (
+  <>
+    <li>
+      <NavLink className="hover:bg-sky-100 hover:text-sky-700 rounded-lg px-3 py-2" to="/">Home</NavLink>
+    </li>
 
-    <NavLink to="/my-profile">
-      My Profile
-    </NavLink>
+    <li>
+      <NavLink className="hover:bg-sky-100 hover:text-sky-700 rounded-lg px-3 py-2" to="/my-profile">My Profile</NavLink>
+    </li>
   </>
 );
          
@@ -40,9 +40,11 @@ const Navbar = () => {
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-green-100">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
       </div>
+        
+
       <ul
-        tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        tabIndex={0}
+        className="menu menu-sm dropdown-content absolute bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow  ">
         {links}
       </ul>
     </div>
@@ -53,7 +55,9 @@ const Navbar = () => {
       {links}
     </ul>
   </div>
-  <div className="navbar-end gap-1">
+  {
+    loading ?(<ClockLoader></ClockLoader>):(
+      <div className="navbar-end gap-1">
    
    <div className='login-btn flex items-center gap-4'>
 
@@ -62,6 +66,9 @@ const Navbar = () => {
         src={`${user ?user.photoURL:userIcon}`} 
         alt="User"
     />
+     <div className="absolute -top-8 left-1/2 -translate-x-1/2 hidden group-hover:block bg-black text-white text-xs px-2 py-1 rounded">
+    {`${user ?user.displayName:"Logout"}`}
+  </div>
 
     {
         !user ? (
@@ -87,11 +94,15 @@ const Navbar = () => {
             >
                 Logout
             </button>
+            
         )
     }
 
 </div>
   </div>
+    )
+  }
+  
 </div>
         </div>
     );
