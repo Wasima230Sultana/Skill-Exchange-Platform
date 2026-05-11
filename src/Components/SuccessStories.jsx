@@ -17,7 +17,7 @@ const SuccessStories = () => {
   ];
 
     return (
-        <div className="max-w-6xl mx-auto my-4 bg-blue-300 p-2 rounded-sm py-4">
+        <div className=" mx-auto my-4 bg-blue-300 p-2 rounded-sm py-4">
 
       <h2 className="text-4xl font-bold text-center mb-10">
         Success Stories
