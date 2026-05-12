@@ -66,9 +66,6 @@ const Navbar = () => {
         src={`${user ?user.photoURL:userIcon}`} 
         alt="User"
     />
-     <div className="absolute -top-8 left-1/2 -translate-x-1/2 hidden group-hover:block bg-black text-white text-xs px-2 py-1 rounded">
-    {`${user ?user.displayName:"Logout"}`}
-  </div>
 
     {
         !user ? (

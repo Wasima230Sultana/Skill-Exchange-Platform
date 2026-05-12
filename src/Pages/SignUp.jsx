@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Components/Provider/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
 
 const SignUp = () => {
-    const {createUser,setUser,updateUser} = useContext(AuthContext);
+    const {createUser,setUser,updateUser,signInWithPopupFunc} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -30,6 +31,21 @@ const SignUp = () => {
             console.log(error.message);
         })
     }
+
+    const handleGoogleSignIn =()=>{
+        signInWithPopupFunc()
+        .then((result)=>{
+            const loggedUser = result.user;
+                  navigate('/')
+                  console.log(loggedUser.email)
+
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+
+
     return (
         <div className=' my-8 flex justify-center items-center'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -52,8 +68,9 @@ const SignUp = () => {
                         <label className="label">Password</label>
                         <input type="password" className="input" placeholder="Password" name='password' />
 
-                        <div><a className="link link-hover">Forgot password?</a></div>
+                        {/* <div><a className="link link-hover">Forgot password?</a></div> */}
                         <button className="btn btn-neutral mt-4" type="submit">Sign Up</button>
+                         <button className="btn btn-neutral mt-4" type="button" onClick={handleGoogleSignIn}><FcGoogle />Login with Google</button>
                         <p className="text-center text-sm text-gray-500">
                             Already have an account? <Link  className="link link-hover" to="/auth/login">Login</Link>
                         </p>
