@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Components/Provider/AuthProvider';
+import SignUp from './SignUp';
+import { Link } from 'react-router';
 
 const MyProfile = () => {
-    const {user} = useContext(AuthContext);
+    const {user,updateUser} = useContext(AuthContext);
+    // const handleUpdate=()=>{
+    //     <SignUp></SignUp>
+    // }
     return (
        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 flex items-center justify-center p-6">
       
@@ -29,9 +34,9 @@ const MyProfile = () => {
         </div>
 
         {/* Update Button */}
-        <button className="mt-8 w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 rounded-xl transition duration-300 shadow-md hover:shadow-xl">
+        <Link to={'/update-profile'} className="btn mt-8 w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 rounded-xl transition duration-300 shadow-md hover:shadow-xl">
           Update Profile
-        </button>
+        </Link>
       </div>
     </div>
     );
