@@ -20,7 +20,10 @@ export const router = createBrowserRouter([
                 element:<Home></Home>
             }, {
                 path:'/my-profile',
-                element:<MyProfile></MyProfile>
+                element:<PrivateRouter>
+                    <MyProfile></MyProfile>
+                </PrivateRouter>
+                
             },
             {
                 path:'/popular-skills',

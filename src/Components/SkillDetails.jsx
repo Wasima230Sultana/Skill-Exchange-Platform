@@ -5,7 +5,7 @@ import Loading from './Loading';
 const SkillDetails = () => {
     const {id} = useParams();
     const data = useLoaderData();
-    console.log(id,data);
+    // console.log(id,data);
     const [skillDetails,setSkillDetails]=useState({});
     useEffect(()=>{
         const details = data.find(skill=>skill.skillId == id);

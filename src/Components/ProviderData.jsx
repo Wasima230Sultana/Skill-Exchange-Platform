@@ -34,9 +34,21 @@ const ProviderData = ({provider}) => {
         </p>
 
         {/* Button */}
-        <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300">
+        {/* <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300">
           View Details
-        </button>
+        </button> */}
+           {/* Extra Info */}
+        <div className="flex justify-center gap-3 text-sm text-gray-600">
+
+          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+            Top Rated
+          </span>
+
+          <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+            Available
+          </span>
+
+        </div>
 
       </div>
     </div>

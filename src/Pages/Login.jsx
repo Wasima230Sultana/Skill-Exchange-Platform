@@ -1,10 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Components/Provider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
-  const { signIn, setUser, signInWithPopupFunc } = useContext(AuthContext);
+  const {
+     signIn, 
+    setUser, 
+    signInWithPopupFunc,
+    sendPasswordResetEmailFunc,
+    setLoading,
+    loading
+   } 
+   = useContext(AuthContext);
+  const emailRef = useRef(null);
   const [error, setError] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,7 +44,7 @@ const Login = () => {
         const loggedUser = result.user;
         // setUser(loggedUser)
         navigate(`${location.state ? location.state : "/"}`)
-        console.log(loggedUser.email)
+        // console.log(loggedUser)
       })
       .catch(() => {
 
@@ -43,7 +52,17 @@ const Login = () => {
   }
 
   const handleForgetPassword = ()=>{
-    
+    //  console.log('forget password',emailRef.current.value)
+
+    const email = emailRef.current.value;
+    sendPasswordResetEmailFunc(email)
+    .then(()=>{
+      //  setLoading(false);
+            alert('Please check your email')
+    })
+    .catch((error)=>{
+      // console.log(error.message)
+    })
   }
 
   return (
@@ -57,6 +76,7 @@ const Login = () => {
             <input type="email"
               className="input"
               placeholder="Email"
+              ref={emailRef}
               name='email' />
 
             <label className="label">Password</label>

@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Components/Provider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 
 const SignUp = () => {
     const {createUser,setUser,updateUser,signInWithPopupFunc} = useContext(AuthContext);
+      const [error, setError] = useState('');
+    
     const navigate = useNavigate();
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -21,6 +23,7 @@ const SignUp = () => {
             .then(()=>{
                  setUser({...createdUser,displayName : name, photoURL:photoURL});
       navigate('/')
+      console.log(createUser)
             })
             .catch((error)=>{
                 setUser(createdUser);
@@ -28,7 +31,7 @@ const SignUp = () => {
            
         })
         .catch(error=>{
-            console.log(error.message);
+            setError(error.message);
         })
     }
 
@@ -37,7 +40,7 @@ const SignUp = () => {
         .then((result)=>{
             const loggedUser = result.user;
                   navigate('/')
-                  console.log(loggedUser.email)
+                //   console.log(loggedUser.email)
 
         })
         .catch((error)=>{
@@ -67,7 +70,7 @@ const SignUp = () => {
 
                         <label className="label">Password</label>
                         <input type="password" className="input" placeholder="Password" name='password' />
-
+                        {error && <p className='text-red-700'>{error}</p>}
                         {/* <div><a className="link link-hover">Forgot password?</a></div> */}
                         <button className="btn btn-neutral mt-4" type="submit">Sign Up</button>
                          <button className="btn btn-neutral mt-4" type="button" onClick={handleGoogleSignIn}><FcGoogle />Login with Google</button>
