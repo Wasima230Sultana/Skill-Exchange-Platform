@@ -10,55 +10,60 @@ import SignUp from "../Pages/SignUp";
 import PrivateRouter from "../Components/Provider/PrivateRouter";
 import MyProfile from "../Pages/MyProfile";
 import UpdateProfile from "../Pages/UpdateProfile";
+import ForgetPassword from "../Pages/ForgetPassword";
 
 export const router = createBrowserRouter([
     {
-        path:'/',
-        element:<MainLayout></MainLayout>,
-        children:[
+        path: '/',
+        element: <MainLayout></MainLayout>,
+        children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             }, {
-                path:'/my-profile',
-                element:<PrivateRouter>
+                path: '/my-profile',
+                element: <PrivateRouter>
                     <MyProfile></MyProfile>
                 </PrivateRouter>
-                
+
             },
-             {
-                path:'/update-profile',
-                element:<PrivateRouter>
+            {
+                path: '/update-profile',
+                element: <PrivateRouter>
                     <UpdateProfile></UpdateProfile>
                 </PrivateRouter>
-                
+
             },
             {
-                path:'/popular-skills',
-                element:<PopularSkills></PopularSkills>,
-            },{
-                path:'/skill/:id',
-                element:<PrivateRouter>
-                     <SkillDetails></SkillDetails>
+                path: '/popular-skills',
+                element: <PopularSkills></PopularSkills>,
+            }, {
+                path: '/skill/:id',
+                element: <PrivateRouter>
+                    <SkillDetails></SkillDetails>
                 </PrivateRouter>
-               ,
-                 loader:()=>fetch('/skill.json'),
+                ,
+                loader: () => fetch('/skill.json'),
 
             }
-            
+
         ]
-    },{
-        path:'/auth',
-        element:<AuthLayout></AuthLayout>,
-        children:[
+    }, {
+        path: '/auth',
+        element: <AuthLayout></AuthLayout>,
+        children: [
             {
-                path:'/auth/login',
-                element:<Login></Login>
+                path: '/auth/login',
+                element: <Login></Login>
             },
             {
-                path:'/auth/signup',
-                element:<SignUp></SignUp>
+                path: '/auth/signup',
+                element: <SignUp></SignUp>
             }
         ]
+    },{
+            path: '/forget-password',
+            element: <ForgetPassword></ForgetPassword>
+            
     }
 ])

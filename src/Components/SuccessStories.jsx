@@ -17,7 +17,7 @@ const SuccessStories = () => {
   ];
 
     return (
-        <div className=" mx-auto my-4 bg-blue-300 p-2 rounded-sm py-4">
+        <div className=" mx-auto my-4 bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 p-2 rounded-sm py-4">
 
       <h2 className="text-4xl font-bold text-center mb-10">
         Success Stories

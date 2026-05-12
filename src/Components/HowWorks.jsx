@@ -10,7 +10,7 @@ const HowWorks = () => {
     return (
         <div>
              
-           <div className=" bg-green-300 mx-auto flex flex-col items-center justify-center mt-2 pt-2 space-y-5 pb-8 rounded-lg">
+           <div className=" bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 mx-auto flex flex-col items-center justify-center mt-2 pt-2 space-y-5 pb-8 rounded-lg">
             <h2 className="text-4xl font-bold text-center mb-10">
         How It Works
       </h2>

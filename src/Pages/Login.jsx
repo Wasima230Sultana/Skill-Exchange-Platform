@@ -5,14 +5,14 @@ import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
   const {
-     signIn, 
-    setUser, 
+    signIn,
+    setUser,
     signInWithPopupFunc,
     sendPasswordResetEmailFunc,
     setLoading,
     loading
-   } 
-   = useContext(AuthContext);
+  }
+    = useContext(AuthContext);
   const emailRef = useRef(null);
   const [error, setError] = useState('');
   const location = useLocation();
@@ -51,18 +51,18 @@ const Login = () => {
       })
   }
 
-  const handleForgetPassword = ()=>{
+  const handleForgetPassword = () => {
     //  console.log('forget password',emailRef.current.value)
 
     const email = emailRef.current.value;
     sendPasswordResetEmailFunc(email)
-    .then(()=>{
-      //  setLoading(false);
-            alert('Please check your email')
-    })
-    .catch((error)=>{
-      // console.log(error.message)
-    })
+      .then(() => {
+        //  setLoading(false);
+        alert('Please check your email')
+      })
+      .catch((error) => {
+        // console.log(error.message)
+      })
   }
 
   return (
@@ -85,9 +85,13 @@ const Login = () => {
               placeholder="Password"
               name='password' />
 
-            <div><button  className="hover:underline cursor-pointer"
-                onClick={handleForgetPassword}
-                type="button">Forgot password?</button></div>
+            <div><Link
+              to={"/forget-password"}
+              state={emailRef.current?.value}
+              className="hover:underline cursor-pointer"
+            >
+              Forgot password?
+            </Link></div>
             {error && <p className='text-red-700'>{error}</p>}
 
             <button type='submit' className="btn btn-neutral mt-4">Login</button>

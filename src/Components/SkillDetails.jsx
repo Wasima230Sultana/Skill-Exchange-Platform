@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import { Link, useLoaderData, useParams } from 'react-router';
 import Loading from './Loading';
 
 const SkillDetails = () => {
@@ -80,7 +80,7 @@ const handleSubmit = (e) => {
             >
               Book Session
             </button>
-
+            <Link className='btn btn-primary' to={'/'}>Go back home</Link>
           </form>
         </div>
 
