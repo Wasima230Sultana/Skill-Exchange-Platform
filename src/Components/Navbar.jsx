@@ -22,11 +22,11 @@ const Navbar = () => {
    const links = (
   <>
     <li>
-      <NavLink className="hover:bg-sky-100 hover:text-sky-700 rounded-lg px-3 py-2" to="/">Home</NavLink>
+      <NavLink className={"font-bold text-xl"} to="/">Home</NavLink>
     </li>
 
     <li>
-      <NavLink className="hover:bg-sky-100 hover:text-sky-700 rounded-lg px-3 py-2" to="/my-profile">My Profile</NavLink>
+      <NavLink className={"font-bold text-xl"} to="/my-profile">My Profile</NavLink>
     </li>
   </>
 );
@@ -37,7 +37,7 @@ const Navbar = () => {
             <div className="navbar shadow-sm rounded-sm bg-gradient-to-r from-[rgb(205,240,234)] via-[rgb(247,219,240)] to-[rgb(190,174,226)]">
   <div className="navbar-start">
     <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-green-100">
+      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden ">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
       </div>
         
@@ -55,10 +55,10 @@ const Navbar = () => {
       {links}
     </ul>
   </div>
-  {
-    loading ?(<ClockLoader></ClockLoader>):(
+ 
       <div className="navbar-end gap-1">
-   
+    {
+    loading ?(<ClockLoader></ClockLoader>):(
    <div className='login-btn flex items-center gap-4'>
 
     <img
@@ -97,10 +97,11 @@ const Navbar = () => {
     }
 
 </div>
-  </div>
+ 
     )
+    
   }
-  
+   </div>
 </div>
         </div>
     );
