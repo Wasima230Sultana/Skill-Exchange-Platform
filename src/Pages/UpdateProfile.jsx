@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Components/Provider/AuthProvider';
 import { Link, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const UpdateProfile = () => {
     const { user, updateUser, setUser } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const navigate = useNavigate();
           photoURL: photoURL
         });
 
-        alert("Profile Updated Successfully!");
+        toast("Profile Updated Successfully!");
         navigate('/my-profile')
       })
       .catch(error => {
@@ -33,7 +34,7 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 my-2 rounded-sm">
 
       <div className="card bg-base-100 w-full max-w-sm shadow-2xl">
 

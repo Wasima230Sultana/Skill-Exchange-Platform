@@ -1,33 +1,36 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../Components/Provider/AuthProvider';
-import { useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router';
+import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
-    const {sendPasswordResetEmailFunc}= useContext(AuthContext);
-   const location = useLocation();
-
+    const { sendPasswordResetEmailFunc, user, setUser } = useContext(AuthContext);
+    const location = useLocation();
+    const emailRef = useRef(null);
     const [email, setEmail] = useState(location.state || '');
+    console.log(location)
 
     const handleResetPassword = (e) => {
+        //  console.log('forget password',emailRef.current.value)
         e.preventDefault();
-
+        const email = emailRef.current.value;
+        console.log(email)
         sendPasswordResetEmailFunc(email)
             .then(() => {
-                alert('Reset email sent');
-
-                window.location.href = "https://mail.google.com";
+                //  setLoading(false);
+                toast.success(`Reset email sent to ${email}`)
             })
             .catch((error) => {
-                alert(error.message);
+                // console.log(error.message)
             })
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100">
 
-            <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl w-full max-w-md shadow-2xl">
+            <div className="bg-white backdrop-blur-lg p-8 rounded-2xl w-full max-w-md shadow-2xl">
 
-                <h2 className="text-3xl font-bold text-white text-center mb-6">
+                <h2 className="text-3xl font-bold text-black text-center mb-6">
                     Reset Password
                 </h2>
 
@@ -36,9 +39,11 @@ const ForgetPassword = () => {
                     <input
                         type="email"
                         placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="input input-bordered w-full bg-white/20 text-white placeholder-white/60"
+                        ref={emailRef}
+                        defaultValue={email}
+                state={emailRef.current?.value}
+
+                        className="input input-bordered w-full bg-white/20 text-black "
                         required
                     />
 
@@ -48,6 +53,9 @@ const ForgetPassword = () => {
                     >
                         Reset Password
                     </button>
+                    <p className='text-center text-gray-500'>---or---</p>
+                    <Link className='mt-2 w-full btn btn-primary' to={'/auth/login'}>Go back </Link>
+
 
                 </form>
             </div>
@@ -56,3 +64,7 @@ const ForgetPassword = () => {
 };
 
 export default ForgetPassword;
+
+
+
+

@@ -56,7 +56,7 @@ const SignUp = () => {
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <form onSubmit={handleSignUp} className="card-body relative">
                     <fieldset className="fieldset">
-                        <h2 className='mt-4 font-bold text-2xl text-center'>SignUp Here</h2>
+                        <h2 className='mt-4 font-bold text-2xl text-center animate__animated animate__bounce'>Sign Up </h2>
 
                         <label className="label">Name</label>
                         <input type="name"

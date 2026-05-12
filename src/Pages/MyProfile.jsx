@@ -9,7 +9,7 @@ const MyProfile = () => {
     //     <SignUp></SignUp>
     // }
     return (
-       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 flex items-center justify-center p-6">
+       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 flex items-center justify-center p-6 my-2 rounded-sm">
       
       <div className="bg-white shadow-2xl rounded-3xl p-8 w-full max-w-md text-center">
         

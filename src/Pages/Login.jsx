@@ -2,6 +2,9 @@ import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Components/Provider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
+import { toast } from 'react-toastify';
+import { FaEye } from 'react-icons/fa';
+import { IoEyeOff } from 'react-icons/io5';
 
 const Login = () => {
   const {
@@ -17,7 +20,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
-
+  const [show, setShow] = useState(false)
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -51,26 +54,14 @@ const Login = () => {
       })
   }
 
-  const handleForgetPassword = () => {
-    //  console.log('forget password',emailRef.current.value)
-
-    const email = emailRef.current.value;
-    sendPasswordResetEmailFunc(email)
-      .then(() => {
-        //  setLoading(false);
-        alert('Please check your email')
-      })
-      .catch((error) => {
-        // console.log(error.message)
-      })
-  }
+  
 
   return (
     <div className=' my-8 flex justify-center items-center'>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset">
-            <h2 className='mt-4 font-bold text-2xl text-center'>Login Here</h2>
+            <h2 className='animate__animated animate__bounce mt-4 font-bold text-2xl text-center'>Login Here</h2>
 
             <label className="label">Email</label>
             <input type="email"
@@ -80,11 +71,16 @@ const Login = () => {
               name='email' />
 
             <label className="label">Password</label>
-            <input type="password"
-              className="input"
-              placeholder="Password"
-              name='password' />
 
+            <div className='relative'>
+              <input type={show ? "text" : "password"} className="input " placeholder="Password" name='password' />
+              <span
+                onClick={() => setShow(!show)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer z-50 p-4"
+              >
+                {show ? <FaEye /> : <IoEyeOff />}
+              </span>
+            </div>
             <div><Link
               to={"/forget-password"}
               state={emailRef.current?.value}

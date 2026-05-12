@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router';
 import Loading from './Loading';
+import { toast } from 'react-toastify';
 
 const SkillDetails = () => {
     const {id} = useParams();
@@ -22,16 +23,16 @@ const SkillDetails = () => {
 const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert("Session Booked Successfully!");
+    toast.success("Session Booked Successfully!");
 
     e.target.reset();
   };
     return (
-        <div className="max-w-4xl mx-auto my-10 bg-white shadow-lg rounded-xl overflow-hidden">
+        <div className="max-w-4xl mx-auto my-10 bg-white shadow-lg rounded-sm overflow-hidden">
 
       {/* Image */}
       <img
-        className="w-full h-72 object-cover"
+        className=" w-full h-72 object-cover"
         src={skillDetails.image}
         alt={skillDetails.skillName}
       />
@@ -39,7 +40,7 @@ const handleSubmit = (e) => {
       {/* Content */}
       <div className="p-6 space-y-3">
 
-        <h2 className="text-3xl font-bold">
+        <h2 className="animate__animated animate__bounce text-3xl font-bold">
           {skillDetails.skillName}
         </h2>
 

@@ -4,10 +4,11 @@ import logo from '../assets/logo.png';
 import userIcon from '../assets/user.png';
 import { AuthContext } from './Provider/AuthProvider';
 import { ClockLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
 const Navbar = () => {
   const {user,logOut,loading} = useContext(AuthContext)
   const handleLogOut = ()=>{
-    alert('Logout successfully');
+    toast('Logout successfully');
     logOut()
     .then(()=>{
 
@@ -15,7 +16,7 @@ const Navbar = () => {
     .catch(error=>{
         const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorMessage);
+            toast(errorMessage);
     })
     
   }
@@ -34,7 +35,7 @@ const Navbar = () => {
     
     return (
         <div className='mt-5'>
-            <div className="navbar shadow-sm rounded-sm bg-gradient-to-r from-[rgb(205,240,234)] via-[rgb(247,219,240)] to-[rgb(190,174,226)]">
+            <div className="navbar shadow-sm rounded-sm bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden ">
