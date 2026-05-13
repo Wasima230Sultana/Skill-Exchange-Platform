@@ -7,7 +7,7 @@ const ForgetPassword = () => {
     const { sendPasswordResetEmailFunc, user, setUser } = useContext(AuthContext);
     const location = useLocation();
     const emailRef = useRef(null);
-    const [email, setEmail] = useState(location.state || '');
+    // const [email, setEmail] = useState(location.state || '');
     console.log(location)
 
     const handleResetPassword = (e) => {
@@ -19,6 +19,7 @@ const ForgetPassword = () => {
             .then(() => {
                 //  setLoading(false);
                 toast.success(`Reset email sent to ${email}`)
+                // window.location.href = "https://mail.google.com";
             })
             .catch((error) => {
                 // console.log(error.message)
@@ -40,8 +41,8 @@ const ForgetPassword = () => {
                         type="email"
                         placeholder="Enter your email"
                         ref={emailRef}
-                        defaultValue={email}
-                state={emailRef.current?.value}
+                        // defaultValue={email}
+                // state={emailRef.current?.value}
 
                         className="input input-bordered w-full bg-white/20 text-black "
                         required

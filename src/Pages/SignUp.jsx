@@ -10,6 +10,7 @@ const SignUp = () => {
       const [error, setError] = useState('');
     const [show,setShow] = useState(false);
     const navigate = useNavigate();
+
     const handleSignUp = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -17,6 +18,22 @@ const SignUp = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
+
+    // Password Validation
+    if (!/[A-Z]/.test(password)) {
+      setError('Password must contain at least one uppercase letter');
+      return;
+    }
+
+    if (!/[a-z]/.test(password)) {
+      setError('Password must contain at least one lowercase letter');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      return;
+    }
         console.log({name,email,photoURL,password})
         createUser(email,password)
         .then(result=>{
@@ -71,6 +88,7 @@ const SignUp = () => {
                         <input type="text" className="input" placeholder="Enter photo URL" name='photoURL' />
 
                         <label className="label">Password</label>
+                        
                         <div className='relative'>
                             <input  type={show ? "text" : "password"} className="input " placeholder="Password" name='password' />
                         <span

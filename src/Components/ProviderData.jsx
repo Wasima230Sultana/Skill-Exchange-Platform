@@ -38,7 +38,7 @@ const ProviderData = ({provider}) => {
           View Details
         </button> */}
            {/* Extra Info */}
-        <div className="flex justify-center gap-3 text-sm text-gray-600">
+        <div className="flex justify-center gap-3 flex-col md:flex-row text-sm text-gray-600">
 
           <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
             Top Rated

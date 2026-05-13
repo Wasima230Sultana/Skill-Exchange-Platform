@@ -9,7 +9,7 @@ const TopProviders = () => {
         .then(data=>setProvider(data))
     },[])
     return (
-        <div className='bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 grid grid-cols-3 gap-8 my-4 bg-pink-300 p-4 rounded-sm'>
+        <div className='bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 grid grid-cols-2 md:grid-cols-3 gap-8 my-4 bg-pink-300 p-4 rounded-sm'>
             {
                 provider.map(provider=>
                 <ProviderData key={provider.skillId} provider={provider}></ProviderData>)
