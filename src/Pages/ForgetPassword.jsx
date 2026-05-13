@@ -8,13 +8,13 @@ const ForgetPassword = () => {
     const location = useLocation();
     const emailRef = useRef(null);
     // const [email, setEmail] = useState(location.state || '');
-    console.log(location)
+    // console.log(location)
 
     const handleResetPassword = (e) => {
         //  console.log('forget password',emailRef.current.value)
         e.preventDefault();
         const email = emailRef.current.value;
-        console.log(email)
+        // console.log(email)
         sendPasswordResetEmailFunc(email)
             .then(() => {
                 //  setLoading(false);

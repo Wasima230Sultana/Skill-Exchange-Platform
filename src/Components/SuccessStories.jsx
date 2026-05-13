@@ -75,21 +75,21 @@ const SuccessStories = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 p-2 rounded-sm py-4 my-2">
+    <div className=" bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100  rounded-lg">
 
       {/* Heading */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 my-2 pt-4">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
           Success Stories
         </h2>
 
-        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        <p className="mt-4 text-gray-600 mx-auto">
           Real learners and instructors sharing their amazing journey with SkillSwap.
         </p>
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 my-2">
 
         {
           stories.map((story, index) => (

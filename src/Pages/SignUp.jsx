@@ -34,7 +34,7 @@ const SignUp = () => {
       setError('Password must be at least 6 characters long');
       return;
     }
-        console.log({name,email,photoURL,password})
+        // console.log({name,email,photoURL,password})
         createUser(email,password)
         .then(result=>{
             const createdUser = result.user;
@@ -42,7 +42,7 @@ const SignUp = () => {
             .then(()=>{
                  setUser({...createdUser,displayName : name, photoURL:photoURL});
       navigate('/')
-      console.log(createUser)
+    //   console.log(createUser)
             })
             .catch((error)=>{
                 setUser(createdUser);
@@ -63,7 +63,7 @@ const SignUp = () => {
 
         })
         .catch((error)=>{
-            console.log(error)
+            // console.log(error)
         })
     }
 
@@ -88,7 +88,7 @@ const SignUp = () => {
                         <input type="text" className="input" placeholder="Enter photo URL" name='photoURL' />
 
                         <label className="label">Password</label>
-                        
+
                         <div className='relative'>
                             <input  type={show ? "text" : "password"} className="input " placeholder="Password" name='password' />
                         <span
