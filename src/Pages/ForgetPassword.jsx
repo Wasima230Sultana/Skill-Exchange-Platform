@@ -1,71 +1,76 @@
-import React, { useContext, useRef, useState } from 'react';
-import { AuthContext } from '../Components/Provider/AuthProvider';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router';
+import { AuthContext } from '../Components/Provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
-    const { sendPasswordResetEmailFunc, user, setUser } = useContext(AuthContext);
+
+    const { sendPasswordResetEmailFunc } = useContext(AuthContext);
+
     const location = useLocation();
-    const emailRef = useRef(null);
-    // const [email, setEmail] = useState(location.state || '');
-    // console.log(location)
+
+    const [email, setEmail] = useState('');
+
+    useEffect(() => {
+        if(location.state?.email){
+            setEmail(location.state.email);
+        }
+    }, [location.state]);
 
     const handleResetPassword = (e) => {
-        //  console.log('forget password',emailRef.current.value)
         e.preventDefault();
-        const email = emailRef.current.value;
-        // console.log(email)
+
         sendPasswordResetEmailFunc(email)
-            .then(() => {
-                //  setLoading(false);
-                toast.success(`Reset email sent to ${email}`)
-                // window.location.href = "https://mail.google.com";
-            })
-            .catch((error) => {
-                // console.log(error.message)
-            })
-    }
+        .then(() => {
+
+            toast.success('Password reset email sent');
+
+            // redirect to gmail
+            window.location.href = 'https://mail.google.com';
+
+        })
+        .catch((error) => {
+            toast(error.message);
+        });
+    };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100">
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 ">
 
-            <div className="bg-white backdrop-blur-lg p-8 rounded-2xl w-full max-w-md shadow-2xl">
+            <form
+                onSubmit={handleResetPassword}
+                className="bg-white p-8 rounded-xl shadow-md space-y-4"
+            >
 
-                <h2 className="text-3xl font-bold text-black text-center mb-6">
+                <h2 className="text-2xl font-bold text-center">
                     Reset Password
                 </h2>
 
-                <form onSubmit={handleResetPassword}>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="input input-bordered w-full"
+                    required
+                />
 
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        ref={emailRef}
-                        // defaultValue={email}
-                // state={emailRef.current?.value}
+                <button
+                    type="submit"
+                    className="btn btn-primary w-full"
+                >
+                    Reset Password
+                </button>
+                <Link
+                    to={'/'}
+                    className="btn btn-primary w-full"
+                >
+                    Go back
+                </Link>
+            </form>
 
-                        className="input input-bordered w-full bg-white/20 text-black "
-                        required
-                    />
-
-                    <button
-                        type="submit"
-                        className="btn btn-primary w-full mt-5"
-                    >
-                        Reset Password
-                    </button>
-                    <p className='text-center text-gray-500'>---or---</p>
-                    <Link className='mt-2 w-full btn btn-primary' to={'/auth/login'}>Go back </Link>
-
-
-                </form>
-            </div>
         </div>
     );
 };
 
 export default ForgetPassword;
-
-
-
-

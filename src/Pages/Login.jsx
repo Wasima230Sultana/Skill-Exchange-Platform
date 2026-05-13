@@ -11,11 +11,11 @@ const Login = () => {
     signIn,
     setUser,
     signInWithPopupFunc,
-    sendPasswordResetEmailFunc,
     setLoading,
     loading
   }
     = useContext(AuthContext);
+
   const emailRef = useRef(null);
   const [error, setError] = useState('');
   const location = useLocation();
@@ -81,9 +81,10 @@ const Login = () => {
                 {show ? <FaEye /> : <IoEyeOff />}
               </span>
             </div>
-            <div><Link
+            <div>
+              <Link
               to={"/forget-password"}
-              state={emailRef.current?.value}
+              state={{ email: emailRef.current?.value }}
               className="hover:underline cursor-pointer"
             >
               Forgot password?
