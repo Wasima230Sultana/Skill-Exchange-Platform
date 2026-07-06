@@ -1,10 +1,10 @@
 # SkillSwap – A Local Skill Exchange Platform
 
 ## 🌐 Live Website
-[Live Link Here](https://your-live-link.com)
+[Live Link Here](https://skill-exchange-f69fd.web.app/)
 
 ## 📂 GitHub Repository
-[GitHub Repo Here](https://github.com/your-username/skillswap)
+[GitHub Repo Here](https://github.com/Wasima230Sultana/Skill-Exchange-Platform)
 
 ---
 
